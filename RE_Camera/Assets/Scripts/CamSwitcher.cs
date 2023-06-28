@@ -8,7 +8,9 @@ public class CamSwitcher : MonoBehaviour
     public Transform Player;
     public CinemachineVirtualCamera activeCam;
     public CinemachineVirtualCamera topCam;
+    public CinemachineVirtualCamera AniCam;
     private bool cameraOn = false;
+    private bool cameraOn2 = false;
     public Material material1;
     public Material material2;
     public float alpha = 0.5f;
@@ -37,6 +39,23 @@ public class CamSwitcher : MonoBehaviour
             {
                 topCam.Priority = 0;
                 ChangeAlpha(material1, material2, 1f);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            cameraOn2 = !cameraOn2;
+            Debug.Log("El valor del booleano ha cambiado a: " + cameraOn2);
+
+            if (cameraOn2 == true)
+            {
+                AniCam.Priority = 10;
+                //ChangeAlpha(material1, material2, alpha);
+            }
+            else
+            {
+                AniCam.Priority = 0;
+                //ChangeAlpha(material1, material2, 1f);
             }
         }
     }
